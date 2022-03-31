@@ -4,18 +4,16 @@
 			<b-row align-v="center" class="py-5"> 
 				<b-col> 				
 					<b-container>
-						
-						<b-row align-v="center"> 
-							<b-col> </b-col>
+						<b-row>
+							<b-col cols="1"> </b-col> 
 							<b-col> 
-								<b-container> 
-									<h1>Title</h1>
-									<p>Description</p>
+								<b-container class="presentation-container"> 
+									<h1>Title!</h1>
+									<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </h4>
 								</b-container>
 							</b-col>
-							<b-col> </b-col>
+							<b-col cols="1"> </b-col>
 						</b-row>	
-
 					</b-container>
 				</b-col>
 				<b-col> 
@@ -39,6 +37,6 @@
 
 <style>
 	/*@import '../assets/mystyles.css';*/
-
+	
 
 </style>

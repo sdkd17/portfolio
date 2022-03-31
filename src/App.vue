@@ -24,6 +24,8 @@
   </div>
 </template>
 
-<style >
 
+<style lang="scss">
+  @import './assets/_custom.scss'
 </style>
+

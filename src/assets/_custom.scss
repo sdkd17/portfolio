@@ -1,0 +1,37 @@
+/*@import "../../node_modules/bootstrap/scss/bootstrap.scss";*/
+
+$body-bg: #111;
+$body-color: #FFF;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap'); //Maven Pro
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap'); //Red hat mono
+
+$font-size-title: $font-size-base * 5 !default;
+
+.presentation-container {
+	h1 {
+		font-size: $font-size-title;
+		font-family: 'Maven Pro';
+		background: -webkit-linear-gradient(#A80, #30F);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}	
+
+	h4 {
+		color: $gray-400;
+		font-family: 'Red Hat Mono';
+	}
+}
+
+.work-container {
+	height: 600px;
+	
+	
+
+	.work {
+		background-color: $gray-900;
+		border-radius: $border-radius;
+    max-height: inherit;
+	}
+}
