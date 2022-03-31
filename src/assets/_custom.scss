@@ -24,14 +24,17 @@ $font-size-title: $font-size-base * 5 !default;
 	}
 }
 
-.work-container {
-	height: 600px;
-	
-	
 
 	.work {
+
 		background-color: $gray-900;
 		border-radius: $border-radius;
-    max-height: inherit;
+	
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+			}
+
 	}
-}
+

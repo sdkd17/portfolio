@@ -1,7 +1,7 @@
 <template>
   <div class="home px-5">
     <Intro />
-    <b-container class=" work-container m-0 p-5"> 
+    <b-container fluid class="mx-0 p-5"> 
       <Work :work="works[0]"/>
       <Work :work="works[1]"/>
     </b-container>
