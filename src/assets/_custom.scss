@@ -9,7 +9,7 @@ $body-color: #FFF;
 
 $font-size-title: $font-size-base * 5 !default;
 
-.my-animation {
+.my-underline {
 	font-size: $font-size-base * 2;
 	a span {
 		padding: 0.2em;
@@ -53,4 +53,16 @@ $font-size-title: $font-size-base * 5 !default;
 			}
 
 	}
+
+.about-me {
+	
+	font-family: 'Maven Pro';
+
+	p {
+
+		font-size: $font-size-base * .9;
+		font-family: Red Hat Mono;
+		color: $gray-400;
+	}
+}
 
