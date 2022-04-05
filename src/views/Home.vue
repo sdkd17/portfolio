@@ -22,7 +22,7 @@ export default {
   },
   data () {
     return {
-      works : ['sombrero', 'perro']
+      works : ['Sombrero', 'Perro']
     }
   }
 }

@@ -8,11 +8,19 @@ $body-color: #FFF;
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap'); //Red hat mono
 
 $font-size-title: $font-size-base * 5 !default;
+$font-size-work: $font-size-base * 3 !default;
+
+$duration: .2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+h1, h3 {
+	font-family: 'Maven Pro';
+}
 
 .presentation-container {
 	h1 {
-		font-size: $font-size-title;
-		font-family: 'Maven Pro';
+		font-size: $font-size-title;		
 		background: -webkit-linear-gradient(#A80, #30F);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -29,12 +37,56 @@ $font-size-title: $font-size-base * 5 !default;
 
 		background-color: $gray-900;
 		border-radius: $border-radius;
-	
-			img {
-				height: 100%;
-				width: 100%;
-				object-fit: contain;
+		
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+		}
+
+		a{
+			text-decoration: none;
+			position: relative;
+			padding-bottom: 8px;
+			color: $gray-400;
+		
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 2px;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background-color: #A80;
 			}
 
+			&:before{
+				opacity: 0;
+				transform: translateY(- $distance);
+				transition: transform 0s $easeOutBack, opacity 0s;
+			}
+
+			&:after{
+				opacity: 0;
+				transform: translateY($distance/2);
+				transition: transform $duration $easeOutBack, opacity $duration;
+			}
+			&:hover,
+			&:focus {
+				&:before,
+				&:after {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				&:before {
+					transition: transform $duration $easeOutBack, opacity $duration;
+				}
+				&:after {
+					transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+				}
+			}
+		}
+		
 	}
 

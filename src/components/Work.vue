@@ -1,9 +1,12 @@
 <template>
 	<b-container fluid class="work p-2 m-4"> 
-		<b-row>  
-			<b-col cols="2"> <h1>{{ work }}</h1> </b-col>
-			<b-col> <b-img :src="require(`../assets/${work}.jpg`)"> </b-img> </b-col>
-			<b-col cols="2"> </b-col>
+		<b-row class="p-5">  
+			<b-col cols="2" class="pl-5">
+				<b-link href="#foo">{{ work }}</b-link>
+			</b-col>
+			<b-col class="p-5"> 
+				<b-img thumbnail :src="require(`../assets/${work.toLowerCase()}.jpg`)"> </b-img> 
+			</b-col>
 		</b-row>	
 	</b-container>
 </template>
