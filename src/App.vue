@@ -5,10 +5,10 @@
         
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="mr-auto">
-            <b-nav-item to="/"> Home </b-nav-item>
-            <b-nav-item to="/about">About</b-nav-item>
-            <b-nav-item to="/contact">Contact</b-nav-item>
+          <b-navbar-nav class="mr-auto my-animation">
+            <b-nav-item to="/"> <span> Home </span> </b-nav-item>
+            <b-nav-item to="/about"> <span> About </span> </b-nav-item>
+            <b-nav-item to="/contact"> <span> Contact </span> </b-nav-item>
           </b-navbar-nav>
 
           <b-navbar-brand class="mx-auto" href="#" >NavBar</b-navbar-brand>
