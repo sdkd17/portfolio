@@ -1,5 +1,5 @@
 <template>
-	<b-container fluid class="work p-2 m-4"> 
+	<b-container fluid class="work p-2 m-5"> 
 		<b-row class="p-5">  
 			<b-col cols="2" class="pl-5">
 				<b-link href="#foo">{{ work }}</b-link>

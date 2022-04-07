@@ -9,6 +9,7 @@ $body-color: #FFF;
 
 $font-size-title: $font-size-base * 5 !default;
 $font-size-work: $font-size-base * 3 !default;
+$shadow-space: $spacer;
 
 $duration: .2s;
 $distance: 8px;
@@ -104,6 +105,15 @@ h1, h3 {
 			}
 		}
 		
+		&:active,
+		&:hover {
+			transition: all 0.3s ease-out;
+			transform: translate3d(0,-5px,0);
+			box-shadow: 0 1.5*$shadow-space 20px rgba(201, 200, 200, 0.39);
+		}
+
+	
+
 	}
 
 .about-me {
