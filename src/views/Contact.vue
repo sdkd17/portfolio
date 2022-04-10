@@ -5,60 +5,60 @@
 		</b-row>
 
 		<b-row class="my-5 py-5"> 
-			<b-form @submit="onSumbit" class="m-auto" >
-				<b-row> 
-					<b-col> 
-						<b-form-group
-							id="input-group-1"
-							label-cols="4"
-							content-cols="8"
-							label="Name:"
-							label-for="input-name"
-							description="Your name"
-						>
-							<b-form-input
-								id="input-name"
-								v-model="form.name"
-								type="text"
-								placeholder="Enter your name"
-							>
-							</b-form-input>
-						</b-form-group>	
-					</b-col>
-					<b-col>
-						<b-form-group 
-							id="input-group-2"
-							label="Last Name:"
-							label-cols="4"
-							content-cols="8"
-							label-for="input-last-name"
-							description="Your Lastname"
-						>
-							<b-form-input
-								id="input-last-name"
-								v-model="form.lastname"
-								type="text"
-								placeholder="Enter your lastname"
-								
-							>
-							</b-form-input>
-						</b-form-group>
-					</b-col>
-				</b-row>
+			<b-col cols="2"> </b-col>
+			<b-col> 
+			<b-form ref="form" @submit.prevent="sendMessage" >			
+				<b-form-group
+					id="input-group-1"
+					label-cols="2"
+					content-cols="10"		
+					label="Name:"
+					label-for="input-name"
+					description="Your name"
+				>
+					<b-form-input
+						name="name"
+						id="input-name"
+						v-model="form.name"
+						type="text"
+						placeholder="Enter your name"
+					>
+					</b-form-input>
+				</b-form-group>	
 
 				<b-form-group 
 					id="input-group-3"
-					label-cols="4"
-					content-cols="8"
+					label-cols="2"
+					content-cols="10"					
 					label="Email:"
 					label-for="input-email"
 					description="Your Email"
 				>
 					<b-form-input
+						name="email"
 						id="input-email"
 						v-model="form.email"
 						type="email"
 						placeholder="Enter your email"
+						required
+					>
+					</b-form-input>
+				</b-form-group>
+
+				<b-form-group 
+					id="input-group-3"
+					label-cols="2"
+					content-cols="10"
+					label="Subject:"
+					label-for="input-subject"
+					description=""
+				>
+					<b-form-input
+						name="subject"
+						id="input-subject"
+						v-model="form.subject"
+						type="text"
+						placeholder="subject"
 						required
 					>
 					</b-form-input>
@@ -71,6 +71,7 @@
 					description="Your message"
 				>
 					<b-form-textarea
+						name="message"
 						id="input-message"
 						v-model="form.message"
 						type="textarea"
@@ -82,11 +83,23 @@
 				<b-button type="submit" variant="primary" block>Send Message</b-button>
 				
 			</b-form>
+			</b-col>
+			<b-col cols="2"> </b-col>
 		</b-row>
+
+		<b-alert 
+			:show="show"
+			dismissible 
+			:variant="variant"
+		>
+			{{ alertText }}
+		</b-alert>
 	</b-container>
 </template>
 
 <script>
+	import emailjs from '@emailjs/browser'
+
 	export default {
 		name: 'Contact',
 		components: {
@@ -97,15 +110,28 @@
 			return {
 				form: {
 					name: '',
-					lastname: '',
+					subject: '',
 					email: '',
 					message: ''
-				}
+				},
+				show: false,
+				variant: 'success',
+				alertText: ''
 			}
 		},
 		methods: {
-			onSubmit(event) {
-				event.preventdefault()
+			sendMessage() {
+				
+				emailjs.sendForm('service_zuwuzli','template_99n75pc', this.$refs.form, '3qtcd7Bkgis7MuhDC')
+					.then((result) => {
+						this.show = true;
+						this.alertText = result.text;
+					}, (error) => {
+						this.show = true;
+						this.variant = 'warning';
+						this.alertText = error.text;
+					})
+
 			},
 
 		}
