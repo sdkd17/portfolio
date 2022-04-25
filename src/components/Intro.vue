@@ -8,8 +8,9 @@
 							<b-col cols="1"> </b-col> 
 							<b-col> 
 								<b-container class="presentation-container"> 
-									<h1>Title!</h1>
-									<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </h4>
+									<h1>Hola!</h1>
+									<h4>Soy Sergio, un aficionado a la fotograía al que le cayó una camara 
+										en las manos hace unos años y no ha podido parar de usarla. </h4>
 								</b-container>
 							</b-col>
 							<b-col cols="1"> </b-col>
@@ -18,7 +19,7 @@
 				</b-col>
 				<b-col> 
 					<b-container> 			
-						<b-img thumbnail fluid :src="require('../assets/papa.jpg')" alt="Image 1"></b-img>
+						<b-img thumbnail fluid :src="require('../assets/gente.jpg')" alt="Image 1"></b-img>
 					</b-container>
 				</b-col>
 			</b-row>

@@ -1,10 +1,15 @@
 <template>
   <div class="home px-5">
     <Intro />
-    <b-container fluid class="mx-0 p-5"> 
-      <Work :work="works[0]"/>
-      <Work :work="works[1]"/>
-    </b-container>
+     <b-container> 
+         <b-row align-h="center" class="pt-5">
+          <h2> {{ "cosas a las que le saco fotos".toUpperCase() }} </h2>
+        </b-row>
+     </b-container>
+    <b-container v-for="p in projects" :key="p" fluid class="mx-0 p-5">
+      <Project :project="p"/>
+    </b-container>  
+  
   </div>
 </template>
 
@@ -12,17 +17,17 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import Intro from '@/components/Intro.vue'
-import Work from '@/components/Work.vue'
+import Project from '@/components/Project.vue'
 
 export default {
   name: 'Home',
   components: {
     Intro,
-    Work
+    Project
   },
   data () {
     return {
-      works : ['Sombrero', 'Perro']
+      projects : ['Gente', 'Animales', 'Otros']
     }
   }
 }

@@ -80,7 +80,7 @@
 					</b-form-textarea>
 				</b-form-group>
 
-				<b-button type="submit" variant="primary" block>Send Message</b-button>
+				<b-button type="submit" block>Send Message</b-button>
 				
 			</b-form>
 			</b-col>
