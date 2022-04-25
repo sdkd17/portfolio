@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
-import Galery from '../views/Galery.vue'
+import Gallery from '../views/Gallery.vue'
 
 Vue.use(VueRouter)
 
@@ -28,9 +28,10 @@ const routes = [
     component: Contact
   },
   {
-    path: '/galery',
-    name: 'Galery',
-    component: Galery
+    path: '/gallery/:project',
+    name: 'Gallery',
+    component: Gallery,
+    props: true
   }
 
 ]

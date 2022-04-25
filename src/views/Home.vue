@@ -6,9 +6,12 @@
           <h2> {{ "cosas a las que le saco fotos".toUpperCase() }} </h2>
         </b-row>
      </b-container>
-    <b-container v-for="p in projects" :key="p" fluid class="mx-0 p-5">
-      <Project :project="p"/>
-    </b-container>  
+     <b-link v-for="p in projects" :key="p" :to="{path: `/gallery/${p}`}"> 
+      <b-container  class="mx-auto py-5">
+         <Project :project="p"/>
+      </b-container>  
+     </b-link>
+    
   
   </div>
 </template>

@@ -17,6 +17,7 @@ $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 $projectHeight : 600px;
+$galleryWidth: 80%;
 
 #app {
 	height: 100%;
@@ -141,4 +142,16 @@ h1, h3 {
 
 .footer {
 	font-size: $font-size-footer;
+}
+
+.gallery-container {
+	display: flex;
+	max-width: $galleryWidth;
+	flex-wrap: wrap;
+
+	img {
+		max-width:  $galleryWidth/3;
+		object-fit: contain;
+	}
+
 }
