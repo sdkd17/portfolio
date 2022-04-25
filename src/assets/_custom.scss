@@ -17,7 +17,7 @@ $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 $projectHeight : 600px;
-$galleryWidth: 80%;
+$galleryWidth: 100%;
 
 #app {
 	height: 100%;
@@ -61,72 +61,71 @@ h1, h3 {
 	}
 }
 
+.project {
 
-	.project {
+	background-color: $gray-900;
+	border-radius: $border-radius;
+	height: $projectHeight;
 
-		background-color: $gray-900;
-		border-radius: $border-radius;
-		height: $projectHeight;
+	img {
+		max-height: calc(($projectHeight*80)/100);
+		object-fit: contain;
+	}
 
-		img {
-			max-height: ($projectHeight*80)/100;
-			object-fit: contain;
+	a{
+		text-decoration: none;
+		position: relative;
+		padding-bottom: 8px;
+		color: $gray-400;
+	
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 2px;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background-color: #A80;
 		}
 
-		a{
-			text-decoration: none;
-			position: relative;
-			padding-bottom: 8px;
-			color: $gray-400;
-		
+		&:before{
+			opacity: 0;
+			transform: translateY(- $distance);
+			transition: transform 0s $easeOutBack, opacity 0s;
+		}
+
+		&:after{
+			opacity: 0;
+			transform: translateY(calc($distance/2));
+			transition: transform $duration $easeOutBack, opacity $duration;
+		}
+		&:hover,
+		&:focus {
 			&:before,
 			&:after {
-				content: '';
-				position: absolute;
-				bottom: 2px;
-				left: 0;
-				right: 0;
-				height: 2px;
-				background-color: #A80;
+				opacity: 1;
+				transform: translateY(0);
 			}
-
-			&:before{
-				opacity: 0;
-				transform: translateY(- $distance);
-				transition: transform 0s $easeOutBack, opacity 0s;
-			}
-
-			&:after{
-				opacity: 0;
-				transform: translateY($distance/2);
+			&:before {
 				transition: transform $duration $easeOutBack, opacity $duration;
 			}
-			&:hover,
-			&:focus {
-				&:before,
-				&:after {
-					opacity: 1;
-					transform: translateY(0);
-				}
-				&:before {
-					transition: transform $duration $easeOutBack, opacity $duration;
-				}
-				&:after {
-					transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
-				}
+			&:after {
+				transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
 			}
 		}
-		
-		&:active,
-		&:hover {
-			transition: all 0.3s ease-out;
-			transform: translate3d(0,-5px,0);
-			box-shadow: 0 1.5*$shadow-space 20px rgba(201, 200, 200, 0.39);
-		}
-
-	
-
 	}
+	
+	&:active,
+	&:hover {
+		transition: all 0.3s ease-out;
+		transform: translate3d(0,-5px,0);
+		box-shadow: 0 1.5*$shadow-space 20px rgba(201, 200, 200, 0.39);
+	}
+
+
+
+}
 
 .about-me {
 	
@@ -146,12 +145,25 @@ h1, h3 {
 
 .gallery-container {
 	display: flex;
-	max-width: $galleryWidth;
 	flex-wrap: wrap;
-
-	img {
-		max-width:  $galleryWidth/3;
+	justify-content: space-between;
+	column-gap: 8%;
+	align-items: center;
+	
+	.img-wrap {
+		max-width: 25%;
 		object-fit: contain;
+		
+		
 	}
 
+}
+
+.modal {
+	width: 100%;
+	
+	img {
+
+		object-fit: contain;
+	}
 }

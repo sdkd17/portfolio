@@ -11,7 +11,7 @@
           <b-nav-item to="/contact"> <span> Contact </span> </b-nav-item>
         </b-navbar-nav>
 
-        <b-navbar-brand class="mx-auto" href="#" >Sergio Klein</b-navbar-brand>
+        <b-navbar-brand class="mx-auto" to="/" >Sergio Klein</b-navbar-brand>
 
         <b-navbar-nav class="ml-auto"> 
           <b-nav-item href="https://www.instagram.com/gersiok/" target="_blank"> 
