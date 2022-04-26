@@ -11,7 +11,7 @@
           <b-nav-item to="/contact"> <span> Contact </span> </b-nav-item>
         </b-navbar-nav>
 
-        <b-navbar-brand class="mx-auto" to="/" >Sergio Klein</b-navbar-brand>
+        <b-navbar-brand class="mx-auto nav-name" to="/" >Sergio Klein</b-navbar-brand>
 
         <b-navbar-nav class="ml-auto"> 
           <b-nav-item href="https://www.instagram.com/gersiok/" target="_blank"> 
@@ -25,12 +25,12 @@
       <router-view/>
 
     <footer>
-      <b-container fluid class="footer">
+      <b-container fluid class="footer py-5">
         <b-row align-h="center">
           <b-link to="/contact"> Contact </b-link>
         </b-row>
         <b-row align-h="center">
-          <p> Sergio Klein </p>
+          <p class="nav-name"> Sergio Klein </p>
         </b-row>
         <b-row align-h="center">
           <b-link>  <b-icon icon="instagram"> </b-icon>  </b-link>

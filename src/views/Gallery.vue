@@ -1,16 +1,37 @@
 <template>
-  <b-container fluid class="px-5 gallery-header"> 
-    <b-row class="py-5"> 
-      <b-col > <b-link :class="{active: project == 'Gente'}" :to="{name: 'Gallery', params:{project: 'Gente'}}"><h3> Galeria Gente </h3> </b-link> </b-col>
-      <b-col > <b-link :class="{active: project == 'Animales'}" :to="{name: 'Gallery', params:{project: 'Animales'}}"><h3> Galeria Animales </h3> </b-link> </b-col>
-      <b-col > <b-link :class="{active: project == 'Otros'}" :to="{name: 'Gallery', params:{project: 'Otros'}}"><h3> Galeria Otros </h3> </b-link> </b-col>
+  <b-container fluid class="px-5" > 
+    <b-row class="py-5 gallery-header"> 
+      <b-col> 
+        <b-link 
+          :class="{active: project == 'Gente'}" 
+          :to="{name: 'Gallery', params:{project: 'Gente'}}"
+        >
+          <h3> Galeria Gente </h3> 
+        </b-link>
+     </b-col>
+      <b-col> 
+        <b-link 
+          :class="{active: project == 'Animales'}" 
+          :to="{name: 'Gallery', params:{project: 'Animales'}}"
+        >
+          <h3> Galeria Animales </h3>
+        </b-link>
+      </b-col>
+      <b-col >
+        <b-link 
+          :class="{active: project == 'Otros'}" 
+          :to="{name: 'Gallery', params:{project: 'Otros'}}"
+        >
+          <h3> Galeria Otros </h3>
+        </b-link>
+      </b-col>
     </b-row>
     <b-row
       v-if="project == 'Otros'"     
       class="mx-auto"
     >
       <div class="gallery-container ">
-        <div class="img-wrap py-3"  
+        <div class="img-wrap my-3"  
           v-for="img in imgOtros" 
           :key="img"
 
@@ -29,7 +50,7 @@
       class="mx-auto"
     >
       <div class="gallery-container">
-        <div class="img-wrap py-3"  
+        <div class="img-wrap my-3"  
           v-for="img in imgAnimales" 
           :key="img"
         >
@@ -47,7 +68,7 @@
       class="mx-auto"
     >
       <div class="gallery-container">
-        <div class="img-wrap py-3"
+        <div class="img-wrap my-3"
           v-for="img in imgGente" 
           :key="img"
         >
@@ -102,9 +123,9 @@ export default {
     }
   },
   watch: {
-    project(newValue) {
-      console.log(newValue)
-    }
+    // project(newValue) {
+    //   // console.log(newValue)
+    // }
   },
   methods: {
     handleModal(img){
