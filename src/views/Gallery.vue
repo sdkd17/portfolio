@@ -1,7 +1,9 @@
 <template>
-  <b-container fluid class="px-5"> 
-    <b-row align-h="center" class="py-5"> 
-      <h1> Galeria {{ project }} </h1>
+  <b-container fluid class="px-5 gallery-header"> 
+    <b-row class="py-5"> 
+      <b-col > <b-link :class="{active: project == 'Gente'}" :to="{name: 'Gallery', params:{project: 'Gente'}}"><h3> Galeria Gente </h3> </b-link> </b-col>
+      <b-col > <b-link :class="{active: project == 'Animales'}" :to="{name: 'Gallery', params:{project: 'Animales'}}"><h3> Galeria Animales </h3> </b-link> </b-col>
+      <b-col > <b-link :class="{active: project == 'Otros'}" :to="{name: 'Gallery', params:{project: 'Otros'}}"><h3> Galeria Otros </h3> </b-link> </b-col>
     </b-row>
     <b-row
       v-if="project == 'Otros'"     
@@ -95,7 +97,8 @@ export default {
       imgOtros: [],
       imgAnimales: [],
       modalShow: false,
-      imgSelected: null
+      imgSelected: null,
+      // activeGallery: this.props.project
     }
   },
   watch: {
