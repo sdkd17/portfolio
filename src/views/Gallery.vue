@@ -1,80 +1,28 @@
 <template>
-  <b-container fluid class="px-5" > 
+  <b-container fluid class="px-5 pb-5" > 
     <b-row class="py-5 gallery-header"> 
-      <b-col> 
+      <b-col v-for="p in plist" :key="p"> 
         <b-link 
-          :class="{active: project == 'Gente'}" 
-          :to="{name: 'Gallery', params:{project: 'Gente'}}"
+          :class="{active: p == project}" 
+          :to="{name: 'Gallery', params:{project: p, plist: plist}}"
         >
-          <h3> Galeria Gente </h3> 
+          <h3> Galeria {{p}} </h3> 
         </b-link>
      </b-col>
-      <b-col> 
-        <b-link 
-          :class="{active: project == 'Animales'}" 
-          :to="{name: 'Gallery', params:{project: 'Animales'}}"
-        >
-          <h3> Galeria Animales </h3>
-        </b-link>
-      </b-col>
-      <b-col >
-        <b-link 
-          :class="{active: project == 'Otros'}" 
-          :to="{name: 'Gallery', params:{project: 'Otros'}}"
-        >
-          <h3> Galeria Otros </h3>
-        </b-link>
-      </b-col>
+      
     </b-row>
-    <b-row
-      v-if="project == 'Otros'"     
+    <!-- ********************************************************************************** -->
+    <b-row    
       class="mx-auto"
     >
       <div class="gallery-container ">
         <div class="img-wrap my-3"  
-          v-for="img in imgOtros" 
-          :key="img"
-
-        >
-          <b-img 
-            @click.prevent="handleModal(img)"
-            :src="require(`@/assets/Otros${img}`)"
-            thumbnail
-        />
-        </div>           
-      </div>
-    </b-row>
-
-      <b-row
-      v-if="project == 'Animales'"     
-      class="mx-auto"
-    >
-      <div class="gallery-container">
-        <div class="img-wrap my-3"  
-          v-for="img in imgAnimales" 
+          v-for="img in imgShow" 
           :key="img"
         >
           <b-img 
             @click.prevent="handleModal(img)"
-            :src="require(`@/assets/Animales${img}`)"
-            thumbnail
-        />
-        </div>           
-      </div>
-    </b-row>
-
-    <b-row
-      v-if="project == 'Gente'"     
-      class="mx-auto"
-    >
-      <div class="gallery-container">
-        <div class="img-wrap my-3"
-          v-for="img in imgGente" 
-          :key="img"
-        >
-          <b-img 
-            @click.prevent="handleModal(img)"
-            :src="require(`@/assets/Gente${img}`)"
+            :src="require(`@/assets${img}`)"
             thumbnail
         />
         </div>           
@@ -110,23 +58,32 @@ export default {
     project: {
       type: String,
       required: true
-    } 
+    },
+    plist: {
+      type: Array,
+      required: true
+    }
   },
   data(){
     return {
-      imgGente: [],
-      imgOtros: [],
-      imgAnimales: [],
+      imgs: [],
+      imgShow: [],
       modalShow: false,
       imgSelected: null,
-      // activeGallery: this.props.project
     }
   },
   watch: {
-    // project(newValue) {
-    //   // console.log(newValue)
-    // }
+    "$route.params.project": {
+      handler: function(newValue){
+        if (this.imgs) {
+          this.imgShow = this.imgs.filter( img => img.includes(newValue))
+        }
+      },
+      deep: true,
+      immediate: true
+    }
   },
+
   methods: {
     handleModal(img){
       this.modalShow = !this.modalShow
@@ -134,25 +91,16 @@ export default {
       // console.log(img)
     }
   },
+
   mounted() {
   
-    const context = require.context('@/assets/Otros', false, /\.jpg$/)
+    const context = require.context('@/assets', true, /\.jpg$/)
     
-    this.imgOtros = context.keys().map( (key) => {
+    this.imgs = context.keys().map( (key) => {
        return key.slice(1, key.length)
     })
 
-    const context_a = require.context('@/assets/Animales', false, /\.jpg$/)
-    
-    this.imgAnimales = context_a.keys().map( (key) => {
-       return key.slice(1, key.length)
-    })
-
-    const context_g = require.context('@/assets/Gente', false, /\.jpg$/)
-    
-    this.imgGente = context_g.keys().map( (key) => {
-       return key.slice(1, key.length)
-    })
+    this.imgShow = this.imgs.filter( img => img.includes(this.$route.params.project))
 
     
   }

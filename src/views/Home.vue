@@ -6,7 +6,7 @@
           <h2> {{ "cosas a las que le saco fotos".toUpperCase() }} </h2>
         </b-row>
      </b-container>
-     <b-link v-for="p in projects" :key="p" :to="{ name: 'Gallery', params: {project: p} }"> 
+     <b-link v-for="p in projects" :key="p" :to="{ name: 'Gallery', params: {project: p, plist: projects} }"> 
       <b-container  class="mx-auto py-5">
          <Project :project="p"/>
       </b-container>  
@@ -30,8 +30,22 @@ export default {
   },
   data () {
     return {
-      projects : ['Gente', 'Animales', 'Otros']
+      projects : []
     }
+  },
+  mounted(){
+    const context = require.context('@/assets', true, /\.jpg$/)
+    
+    //defino projects segun las carpetas que existen en en @/assets
+    let a = context.keys().map( (key) => {
+      let match = key.match(/\/(\w+)\//)
+      if (match)
+        return match[1]
+      return null
+    })
+    
+    this.projects = [...new Set( a.filter(e => e!=null) )]
+    
   }
 }
 </script>
