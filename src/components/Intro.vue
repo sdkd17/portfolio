@@ -17,7 +17,7 @@
 						</b-row>	
 					</b-container>
 				</b-col>
-				<b-col> 
+				<b-col  class="d-none d-lg-block d-md-block "> 
 					<b-container> 			
 						<b-img thumbnail fluid :src="require('../assets/gente.jpg')" alt="Image 1"></b-img>
 					</b-container>

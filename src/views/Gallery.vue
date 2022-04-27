@@ -15,13 +15,13 @@
     <b-row    
       class="mx-auto"
     >
-      <div class="gallery-container ">
+      <div class="gallery-container">
         <div class="img-wrap my-3"  
           v-for="img in imgShow" 
           :key="img"
         >
           <b-img 
-            @click.prevent="handleModal(img)"
+            @click="handleModal(img)"
             :src="require(`@/assets${img}`)"
             thumbnail
         />
@@ -32,15 +32,17 @@
     <b-modal
       v-model="modalShow"
       lazy 
-      modal-class="modal"     
+      modal-class="modal"
+      size="lg"
+      hide-footer
     >
-      <b-container fluid class="mx-auto"> 
-        <!-- <b-img 
+      <b-container fluid> 
+        <b-img 
           v-if="modalShow" 
-          :src="require(`@/assets/Otros${imgSelected}`)" 
+          :src="require(`@/assets${imgSelected}`)" 
           alt="imagen" 
           thumbnail 
-        /> -->
+        />
       </b-container>
     </b-modal>
   </b-container>
@@ -88,7 +90,6 @@ export default {
     handleModal(img){
       this.modalShow = !this.modalShow
       this.imgSelected = img
-      // console.log(img)
     }
   },
 
