@@ -19,7 +19,7 @@
 				</b-col>
 				<b-col  class="d-none d-lg-block d-md-block "> 
 					<b-container> 			
-						<b-img thumbnail fluid :src="require('../assets/gente.jpg')" alt="Image 1"></b-img>
+						<b-img thumbnail fluid :src="imgSrc" alt="Image 1"></b-img>
 					</b-container>
 				</b-col>
 			</b-row>
@@ -28,12 +28,31 @@
 </template>
 
 <script>
+	import firebaseApp  from "@/firebaseInit.js";
+	import {ref, getStorage, getDownloadURL} from "firebase/storage"
+
 	export default {
 		name: 'Intro',
 		components: {
 
+		},
+		data(){
+			return {
+				imgSrc: null
+			}
+		},
+		mounted(){
+			const storage = getStorage(firebaseApp);
+			getDownloadURL(ref(storage, "gente.jpg"))
+			.then( (url) => {
+					this.imgSrc = url
+				})
+			.catch( (error) => {
+				console.error(error)
+			})
 		}
 	}
+
 </script>
 
 <style>

@@ -1,10 +1,10 @@
 <template>
 	<b-container fluid class="project p-5"> 
 		<b-row align-h="center" class="pb-1">  
-				<h3>{{ project }}</h3>
+				<h3>{{ projectName}}</h3>
 		</b-row>
 		<b-row align-h="center">			
-				<b-img thumbnail :src="require(`../assets/${project.toLowerCase()}.jpg`)"> </b-img> 
+				<b-img thumbnail :src="imgSrc"> </b-img> 
 		</b-row>	
 	</b-container>
 </template>
@@ -16,7 +16,8 @@
 
 		},
 		props: {
-			project: String,
+			projectName: String,
+			imgSrc: String
 		}
 	}
 </script>
