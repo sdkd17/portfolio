@@ -4,7 +4,7 @@
       <Intro />
       <b-container> 
          <b-row align-h="center" class="pt-5">
-          <h2> {{ "cosas a las que le saco fotos".toUpperCase() }} </h2>
+          <h2> {{ title.toUpperCase() }} </h2>
         </b-row>
       </b-container>
       <b-link v-for="p in projects" :key="p.name" :to="{ name: 'Gallery', params: {project: p.name} }">
@@ -48,7 +48,8 @@ export default {
   data () {
     return {
       projects : [],
-      ready: false
+      ready: false,
+      title: '¿A qué le saco fotos?'
     }
   },
   async mounted(){

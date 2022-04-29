@@ -9,7 +9,7 @@
 							<b-col> 
 								<b-container class="presentation-container"> 
 									<h1>Hola!</h1>
-									<h4>Soy Sergio, un aficionado a la fotograía al que le cayó una camara 
+									<h4>Soy Sergio, un aficionado a la fotograía al que le apareció una camara 
 										en las manos hace unos años y no ha podido parar de usarla. </h4>
 								</b-container>
 							</b-col>
@@ -43,7 +43,7 @@
 		},
 		mounted(){
 			const storage = getStorage(firebaseApp);
-			getDownloadURL(ref(storage, "gente.jpg"))
+			getDownloadURL(ref(storage, "intro.jpg"))
 			.then( (url) => {
 					this.imgSrc = url
 				})
