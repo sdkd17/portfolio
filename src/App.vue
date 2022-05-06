@@ -31,7 +31,7 @@
     <footer>
       <b-container fluid class="footer py-5">
         <b-row align-h="center">
-          <b-link to="/contact"> Contact </b-link>
+          <b-link to="/contact"> Contacto </b-link>
         </b-row>
         <b-row align-h="center">
           <p class="nav-name"> Sergio Klein </p>
