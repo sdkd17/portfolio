@@ -4,7 +4,8 @@
       <b-row class="py-5 gallery-header"> 
         <b-col v-for="(p,i) in projects" :key="p.name + i"> 
           <!-- What the hell!! Why is this v-if needed -->
-          <b-link v-if="p.name" 
+          <b-link v-if="p.name"
+            :class="{active: p.name === project}"
             :to="{name: 'Gallery', params: { project: p.name } }"
           >
             <h3> Galeria {{p.name}} </h3> 
@@ -12,42 +13,33 @@
        </b-col>
       </b-row>
       <!-- ********************************************************************************** -->
-      <b-row    
-        class="mx-auto"
-      >
-        <div
-          class="gallery-container"
-          >
-          <div class="img-wrap my-3"
-            v-for="img in currentProject" 
-            :key="img"
-            
-          >
-            <b-img 
-              @click="handleModal(img)"
-              :src="img"
-              thumbnail
-          />
-          </div>           
-        </div>
-      </b-row>
+      <b-row class="mx-auto">
+        <GalleryContainer :imgs="currentProjectShow" />
+      </b-row> 
 
-      <b-modal
-        v-model="modalShow"
-        lazy 
-        modal-class="modal"
-        size="lg"
-        hide-footer
-      >
-        <b-container fluid> 
-          <b-img-lazy
-            v-if="modalShow" 
-            :src="imgSelected" 
-            alt="imagen" 
-            thumbnail 
-          />
-        </b-container>
-      </b-modal>
+      <b-row> 
+        <b-button-toolbar key-nav class="mx-auto p-5">
+          <b-button-group class="mr-2">
+            <b-button @click="goToFirstPage()">&laquo;</b-button>
+            <b-button @click="prevPage()">&lsaquo;</b-button>
+          </b-button-group>
+          <b-button-group>
+            <b-button 
+              v-for="i in Math.ceil(currentProject.length/perPage)" 
+              :key="project+i"
+              :class="{active: currentPage === (i-1)}"
+              @click="changeCurrentPage(i-1)"
+            >
+             {{ i }}
+            </b-button>
+            
+          </b-button-group>
+          <b-button-group class="ml-2">
+            <b-button @click="nextPage()">&rsaquo;</b-button>
+            <b-button @click="goToLastPage()" >&raquo;</b-button>
+          </b-button-group>
+        </b-button-toolbar>
+      </b-row>
     </b-container>
   </div>
 
@@ -66,13 +58,14 @@
 
 <script>
 // import { defineComponent } from '@vue/composition-api'
+import GalleryContainer from '@/components/GalleryContainer.vue'
 import firebaseApp  from "@/firebaseInit.js";
 import {ref, getStorage, list, listAll, getDownloadURL, getMetadata} from "firebase/storage"
 
 export default {
   name: 'Gallery',
   components: {
-
+    GalleryContainer
   },
   props: {
     project: {
@@ -86,7 +79,13 @@ export default {
       modalShow: false,
       imgSelected: '',
       ready: false,
-      
+      currentPage: 0,
+      perPage: 9,
+    }
+  },
+  watch: {
+    project: function() {
+      this.currentPage = 0
     }
   },
   computed: {
@@ -96,14 +95,37 @@ export default {
       } else {
         return []
       }
+    },
+    currentProjectShow(){
+      if (this.ready){
+        return this.currentProject.slice(this.perPage*this.currentPage, this.perPage*this.currentPage+this.perPage)
+      } else {
+        return []
+      }
+      
     }
   },
   methods: {
-    handleModal(img) {
-      this.modalShow = !this.modalShow
-      this.imgSelected = img.replace(/small/,'big')
-      // console.log(img)
-    }
+    
+    changeCurrentPage(page) {
+      this.currentPage = page
+    },
+    goToFirstPage(){
+      this.currentPage = 0
+    },
+    goToLastPage(){
+      this.currentPage = Math.floor(this.currentProject.length/this.perPage)
+    },
+    prevPage(){
+      if (this.currentPage > 0) 
+        this.currentPage = this.currentPage - 1
+    },
+    nextPage(){
+      if (this.currentPage < Math.floor(this.currentProject.length/this.perPage)){
+        this.currentPage = this.currentPage + 1
+      }
+    },
+
   },
 
   async mounted() {
@@ -144,7 +166,6 @@ export default {
     }catch(error) {
       console.error(error)
     }
-    
     this.ready = true
   }
 }
