@@ -17,7 +17,7 @@
 						</b-row>	
 					</b-container>
 				</b-col>
-				<b-col  class="d-none d-lg-block d-md-block "> 
+				<b-col class="d-none d-lg-block d-md-block "> 
 					<b-container> 			
 						<b-img thumbnail fluid :src="imgSrc" alt="Image 1"></b-img>
 					</b-container>

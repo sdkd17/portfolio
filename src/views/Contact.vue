@@ -1,7 +1,7 @@
 <template>
 	<b-container fluid> 
-		<b-row class="my-5 py-5"> 
-			<h1 class="m-auto"> Contact me </h1>
+		<b-row class="my-5"> 
+			<h1 class="m-auto"> Hablemos </h1>
 		</b-row>
 
 		<b-row class="my-5 py-5"> 
@@ -12,16 +12,16 @@
 					id="input-group-1"
 					label-cols="2"
 					content-cols="10"		
-					label="Name:"
+					label="Nombre:"
 					label-for="input-name"
-					description="Your name"
+					description=""
 				>
 					<b-form-input
 						name="name"
 						id="input-name"
 						v-model="form.name"
 						type="text"
-						placeholder="Enter your name"
+						placeholder="Ingresa tu nombre"
 					>
 					</b-form-input>
 				</b-form-group>	
@@ -32,14 +32,14 @@
 					content-cols="10"					
 					label="Email:"
 					label-for="input-email"
-					description="Your Email"
+					description=""
 				>
 					<b-form-input
 						name="email"
 						id="input-email"
 						v-model="form.email"
 						type="email"
-						placeholder="Enter your email"
+						placeholder="Ingresa tu email"
 						required
 					>
 					</b-form-input>
@@ -49,7 +49,7 @@
 					id="input-group-3"
 					label-cols="2"
 					content-cols="10"
-					label="Subject:"
+					label="Asunto:"
 					label-for="input-subject"
 					description=""
 				>
@@ -58,7 +58,7 @@
 						id="input-subject"
 						v-model="form.subject"
 						type="text"
-						placeholder="subject"
+						placeholder="Asunto"
 						required
 					>
 					</b-form-input>
@@ -66,21 +66,21 @@
 	
 				<b-form-group 
 					id="input-group-4"
-					label="Message:"
+					label="Mensaje:"
 					label-for="input-message"
-					description="Your message"
+					description=""
 				>
 					<b-form-textarea
 						name="message"
 						id="input-message"
 						v-model="form.message"
 						type="textarea"
-						placeholder="Enter your message"
+						placeholder="Escribe tu mensaje"
 					>
 					</b-form-textarea>
 				</b-form-group>
 
-				<b-button type="submit" block>Send Message</b-button>
+				<b-button type="submit" block>Enviar</b-button>
 				
 			</b-form>
 			</b-col>

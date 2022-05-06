@@ -23,7 +23,9 @@ $duration: .2s;
 $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
+
 $projectHeight : 600px;
+$projectHeightSm : 300px;
 $image-width: 25vw;
 $image-height: $image-width;
 
@@ -125,9 +127,6 @@ $image-height: $image-width;
 			}
 		}
 	}
-
-	
-
 }
 
 .project {
@@ -149,6 +148,11 @@ $image-height: $image-width;
 	}
 }
 
+@media only screen and (max-width: 650px) {
+	.project {
+		height: $projectHeightSm;
+	}
+}
 
 
 .about-me {
