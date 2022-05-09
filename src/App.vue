@@ -18,8 +18,22 @@
         <b-navbar-brand class="mx-auto nav-name d-none d-lg-block" to="/" >Sergio Klein</b-navbar-brand>
 
         <b-navbar-nav class="ml-auto"> 
-          <b-nav-item href="https://www.instagram.com/gersiok/" target="_blank"> 
+          <b-nav-item 
+            class="p-1" 
+            href="https://www.instagram.com/gersiok/" 
+            target="_blank"
+            v-b-tooltip.hover title="Instagram"
+          > 
             <b-icon icon="instagram"> </b-icon> 
+          </b-nav-item>
+          <b-nav-item
+            class="p-1"
+            href="https://flic.kr/ps/3ma4cL"
+            target="_blank"
+            v-b-tooltip.hover title="Flickr"
+          > 
+            <b-icon icon="circle"> </b-icon> 
+            <b-icon icon="circle-fill"> </b-icon> 
           </b-nav-item>
           <!-- <b-nav-item href="#"> <b-icon icon="flickr"> </b-icon> </b-nav-item> -->
         </b-navbar-nav>

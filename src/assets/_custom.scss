@@ -30,28 +30,32 @@ $image-width: 25vw;
 $image-height: $image-width;
 
 #app {
-	height: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
 	font-family: 'Amatic SC', cursive;
 }
 
 
 .myNav {
 	background-color: #FFF;
-	
+	z-index: 1000;
 	// font-family: 'Shadows Into Light', cursive;
 }
 
 .nav-name {
 	font-family: 'Shadows Into Light', cursive;
 	font-size: $font-size-name;
-
 }
+
 .my-underline {
 	font-size: $font-size-base * 2;
 	a span {
 		padding: 0.2em;
 		// border-radius: 10%;
-		background-image: linear-gradient(rgb(0, 0, 0) 0%, rgb(255, 255, 255) 100%);
+		background-image: linear-gradient(rgb(104, 104, 104) 0%, rgb(255, 255, 255) 100%);
 		background-repeat: no-repeat;
 		background-size:100% 0.2em;
 		background-position: 0 85%;
@@ -78,6 +82,7 @@ $image-height: $image-width;
 
 .home {
 
+	scroll-behavior: smooth;
 	a {
 		text-decoration: none;
 	}
@@ -96,7 +101,7 @@ $image-height: $image-width;
 			left: 0;
 			right: 0;
 			height: 2px;
-			background-color: #A80;
+			background-color: rgb(149, 149, 149);
 
 		}
 
@@ -154,6 +159,13 @@ $image-height: $image-width;
 	}
 }
 
+.project-list-title {
+	padding-top: calc($spacer*8);
+	padding-bottom: calc($spacer*2);
+	background-color: $body-bg;
+	z-index: 900;
+}
+
 
 .about-me {
 	
@@ -170,7 +182,7 @@ $image-height: $image-width;
 	font-size: $font-size-footer;
 	background-color: #FFF;
 	color: black;
-
+	
 	a {
 		font-family: 'Amatic SC', cursive;
 		// font-family: 'Shadows Into Light', cursive;

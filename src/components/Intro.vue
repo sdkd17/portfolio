@@ -17,9 +17,11 @@
 						</b-row>	
 					</b-container>
 				</b-col>
-				<b-col class="d-none d-lg-block d-md-block "> 
-					<b-container> 			
-						<b-img thumbnail fluid :src="imgSrc" alt="Image 1"></b-img>
+				<b-col class="d-none d-lg-block d-md-block"> 
+					<b-container>
+						<b-row align-h="center"> 
+							<b-img thumbnail fluid :src="imgSrc" alt=""></b-img>
+						</b-row> 			
 					</b-container>
 				</b-col>
 			</b-row>

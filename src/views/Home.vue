@@ -2,19 +2,31 @@
   <div class="home px-5">
     <div v-if="ready">
       <Intro />
-      <b-container> 
-         <b-row align-h="center" class="pt-5">
-          <h2> {{ title.toUpperCase() }} </h2>
+      <b-container fluid>  
+         <b-row align-h="center" class="sticky-top project-list-title">
+          <h2 class=""> {{ title.toUpperCase() }} </h2>
+        </b-row>
+      
+        <b-row class="py-5" v-for="p in projects" :key="p.name"> 
+          <b-col cols="1"> </b-col>
+
+          <b-col>
+            
+          <b-link  :to="{ name: 'Gallery', params: {project: p.name} }">
+        
+          <Project 
+              :projectName="p.name"
+              :imgSrc="p.img"
+            />
+
+          </b-link>  
+
+          </b-col>
+
+          <b-col cols="1"> </b-col>
+
         </b-row>
       </b-container>
-      <b-link v-for="p in projects" :key="p.name" :to="{ name: 'Gallery', params: {project: p.name} }">
-      <b-container  class="mx-auto py-5">
-         <Project 
-            :projectName="p.name"
-            :imgSrc="p.img"
-          />
-      </b-container>  
-     </b-link>  
     </div>
     
     <b-container v-else fluid class="py-5">
